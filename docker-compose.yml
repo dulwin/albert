@@ -1,0 +1,21 @@
+ears:
+  build: ./ears
+  ports:
+    - "5001:5001"
+  command: /root/miniconda3/bin/python /ears/app.py
+  links:
+    - brain
+
+mouth:
+  build: ./mouth
+  ports:
+    - "5002:5002"
+  command: /root/miniconda3/bin/python /mouth/app.py
+
+brain:
+  build: ./brain
+  ports:
+    - "5000:5000"
+  command: /root/miniconda3/bin/python /brain/app.py
+  links:
+    - mouth
